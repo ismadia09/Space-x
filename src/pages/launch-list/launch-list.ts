@@ -17,11 +17,34 @@ import { Launch } from '../../app/Models/Launch';
 })
 export class LaunchListPage {
 
-  launches: Launch[];
+  launches: Launch[]
+  nextLaunch: Launch
+
   constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
     this.spacexApi.getAllLaunches().subscribe(data => {
-      this.launches = data;
+      console.log("getAllLaunches")
+      this.launches = data
     })
+
+    this.spacexApi.getNextLaunch().subscribe(data=>{
+      this.nextLaunch = data
+      console.log("getNextLaunch")
+      console.log(data)
+    })
+  }
+
+
+  /** Cells methodes */
+  didClickLaunch(launch){
+
+  }
+
+  didClickLaunchSite(launch){
+
+  }
+
+  didClickRocket(launch){
+
   }
 
   ionViewDidLoad() {

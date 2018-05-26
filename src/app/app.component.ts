@@ -13,7 +13,7 @@ import { LaunchListPage } from '../pages/launch-list/launch-list';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LaunchListPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -22,9 +22,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
+      { title: 'Launches', component: LaunchListPage },
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Launches', component: LaunchListPage }
+      { title: 'List', component: ListPage }
     ];
 
   }

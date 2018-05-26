@@ -14,5 +14,102 @@
 
 
 <ion-content padding>
-{{launches | json}}
+
+  <!-- Next Launch -->
+  <ion-card tappable *ngIf="nextLaunch" (tap)="didClickLaunch(nextLaunch)">
+  
+    <ion-item *ngIf="nextLaunch.launch_year">
+      <ion-avatar item-right>
+        <tbody>
+          <tr>
+            <td class="cellLaunchYearTitle">Launch Year</td>
+          </tr>
+          <tr>
+            <td class="cellLaunchYear">{{ nextLaunch.launch_year }} </td>
+          </tr>
+        </tbody>
+      </ion-avatar>
+      <p class="missionName">{{ nextLaunch.mission_name}}</p>
+    </ion-item>
+  
+    <ion-card-content>
+      <p>{{ nextLaunch.details }}</p>
+    </ion-card-content>
+  
+    <ion-list>
+      <button ion-item (tap)="didClickLaunchSite(nextLaunch)" *ngIf="nextLaunch.launch_site" >
+        <ion-icon name="navigate" item-start></ion-icon>
+        <p class="tableCellTitle">Site: </p>
+        <p item-end class="tableCellData">{{ nextLaunch.launch_site.site_name }}</p>
+  
+      </button>
+  
+      <button ion-item (tap)="didClickRocket(nextLaunch)" *ngIf="nextLaunch.rocket">
+        <ion-icon name="paper-plane" item-start></ion-icon>
+        <p class="tableCellTitle">Rocket: </p>
+        <p item-end class="tableCellData">{{ nextLaunch.rocket.rocket_name }}</p>
+  
+      </button>
+  
+  
+    </ion-list>
+  
+    
+  
+  </ion-card>
+  <!-- End Next Launch -->
+
+
+<ion-card tappable *ngFor="let launch of launches " (tap)="didClickLaunch(launch)" >
+
+    <ion-item>
+      <ion-avatar item-right>
+        <tbody>
+          <tr>
+            <td class="cellLaunchYearTitle">Launch Year</td>
+          </tr>
+          <tr>
+            <td class="cellLaunchYear">{{ launch.launch_year }} </td>
+          </tr>
+        </tbody>
+      </ion-avatar>
+      <p class="missionName">{{ launch.mission_name}}</p>
+    </ion-item>
+
+  <ion-card-content>
+    <p>{{ launch.details }}</p>
+  </ion-card-content>
+
+    <ion-list>
+      <button ion-item (tap)="didClickLaunchSite(launch)" >
+        <ion-icon name="navigate" item-start></ion-icon>
+        <p class="tableCellTitle">Site: </p>
+        <p item-end class="tableCellData">{{ launch.launch_site.site_name }}</p>
+
+      </button>
+  
+      <button ion-item (tap)="didClickRocket(launch)" >
+        <ion-icon name="paper-plane" item-start></ion-icon>
+         <p class="tableCellTitle" >Rocket: </p> 
+        <p item-end class="tableCellData">{{ launch.rocket.rocket_name }}</p>
+
+      </button>
+  
+  
+    </ion-list>
+
+      <!-- <ion-item>
+        <ion-icon name="logo" item-start></ion-icon>
+        Flight Number
+        <ion-badge item-end>{{launch.flight_number}}</ion-badge>
+      </ion-item> -->
+
+      <button ion-button icon-only clear *ngIf="launch.links.video_link" (click)="didClickVideo(launch)">
+        <ion-icon name="videocam"></ion-icon>
+        Watch video
+      </button>
+
+  </ion-card>
+
+
 </ion-content>
