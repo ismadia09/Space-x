@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 import { Launch } from '../../app/Models/Launch';
+import { LaunchpadDetailPage } from '../launchpad-detail/launchpad-detail';
 
 /**
  * Generated class for the LaunchListPage page.
@@ -17,11 +18,37 @@ import { Launch } from '../../app/Models/Launch';
 })
 export class LaunchListPage {
 
-  launches: Launch[];
+  launches: Launch[]
+  nextLaunch: Launch
+
   constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
     this.spacexApi.getAllLaunches().subscribe(data => {
-      this.launches = data;
+      console.log("getAllLaunches")
+      this.launches = data
     })
+
+    this.spacexApi.getNextLaunch().subscribe(data=>{
+      this.nextLaunch = data
+      console.log("getNextLaunch")
+      console.log(data)
+    })
+  }
+
+
+  /** Cells methodes */
+  didClickLaunch(launch){
+
+  }
+
+  didClickLaunchSite(launch){
+    //this.navCtrl.push(LaunchpadDetailPage, { id: launch.site_id })
+    console.log(`${launch.site_id}`);
+    this.navCtrl.push(LaunchpadDetailPage, launch)
+
+  }
+
+  didClickRocket(launch){
+
   }
 
   ionViewDidLoad() {
