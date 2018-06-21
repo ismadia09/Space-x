@@ -20,35 +20,35 @@
 <ion-card *ngFor="let launchSite of launchpadInfos" (click)="didClickLaunchSite(launchSite)">
         <ion-card-header>
                 <ion-item text-wrap>
-                    <b> {{launchpadInfos.full_name}} </b>
+                    <b> {{launchSite.full_name}} </b>
                   </ion-item>
             </ion-card-header>
             <ion-card-content>
               
-              <ion-badge  *ngIf=" launchpadInfos.status == 'active'" color="secondary">
-                  <p> <b ion-text color="dark"> Status :</b>   <b>{{launchpadInfos.status}}</b> </p>  
+              <ion-badge  *ngIf=" launchSite.status == 'active'" color="secondary">
+                  <p> <b ion-text color="dark"> Status :</b>   <b>{{launchSite.status}}</b> </p>  
               </ion-badge>
             
-              <ion-badge  *ngIf=" launchpadInfos.status != 'active'" color="orange">
-                  <p> <b ion-text color="dark"> Status :</b>   <b>{{launchpadInfos.status}}</b> </p>  
+              <ion-badge  *ngIf=" launchSite.status != 'active'" color="orange">
+                  <p> <b ion-text color="dark"> Status :</b>   <b>{{launchSite.status}}</b> </p>  
               </ion-badge>
               
               <ion-card-content>
                   <p>
-                      {{launchpadInfos.details }}
+                      {{launchSite.details }}
                   </p>   
                </ion-card-content>
                <ion-list>
                  <ion-item text-wrap>
                     <ion-icon name="navigate" item-start></ion-icon>
                     <p ion-text color="dark" class="tableCellTitle"> Location : </p>
-                    <p item-end class="tableCellData">{{launchpadInfos.location}}</p>
+                    <p item-end class="tableCellData">{{launchSite.location}}</p>
                  </ion-item>
             
                     <button ion-item (tap)="didClickRocket(nextLaunch)" text-wrap>
                         <ion-icon name="paper-plane" item-start></ion-icon>
                         <p ion-text color="dark" class="tableCellTitle">Rocket : </p>
-                        <p item-end class="tableCellData">{{launchpadInfos.vehicles_launched}}</p>
+                        <p item-end class="tableCellData">{{launchSite.vehicles_launched}}</p>
                       </button>
                </ion-list>
             

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
+import { DetailedCapsuleDataList } from '../../app/Models/DetailedCapsuleDataList';
 
 /**
  * Generated class for the DetailedCapsuleDataListPage page.
@@ -15,9 +17,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetailedCapsuleDataListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  detailedCapsuleDataList: DetailedCapsuleDataList[];
+  constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
+    this.spacexApi.getAllDetailedCapsuleData().subscribe(data => {
+      this.detailedCapsuleDataList = data
+    })
   }
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailedCapsuleDataListPage');
   }

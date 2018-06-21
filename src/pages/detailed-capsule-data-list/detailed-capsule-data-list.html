@@ -15,6 +15,11 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding >
+{{detailedCapsuleDataList | json }}
+<ion-card   *ngFor="let detailedCapsuleData of detailedCapsuleDataList ">
+          <ion-item text-wrap>
+              <b> {{detailedCapsuleData.capsule_serial}} </b>
+            </ion-item>
+</ion-card>
 </ion-content>
