@@ -41,6 +41,7 @@ export class SpacexApiProvider {
     const endPointUrl = `${this.baseUrl}/launchpads/${id}`;
     return this.http.get<LaunchpadDetails>(endPointUrl)
   }
+  
 
   getAllDetailedCapsuleData() : Observable<DetailedCapsuleDataList[]>{
     const endPointUrl = `${this.baseUrl}/parts/caps`;

@@ -16,10 +16,39 @@
 
 
 <ion-content padding >
-{{detailedCapsuleDataList | json }}
-<ion-card   *ngFor="let detailedCapsuleData of detailedCapsuleDataList ">
+
+<ion-card   *ngFor="let detailedCapsuleData of detailedCapsuleDataList " (click)="didClickDetailedCapsuleData(detailedCapsuleData)" >
           <ion-item text-wrap>
               <b> {{detailedCapsuleData.capsule_serial}} </b>
             </ion-item>
+            <ion-card-content>
+              <ion-badge  *ngIf=" detailedCapsuleData.status == 'active'" color="secondary">
+                  <p> <b ion-text color="dark"> Status :</b>   <b>{{detailedCapsuleData.status}}</b> </p>  
+              </ion-badge>
+            
+              <ion-badge  *ngIf=" detailedCapsuleData.status != 'active'" color="orange">
+                  <p> <b ion-text color="dark"> Status :</b>   <b>{{detailedCapsuleData.status}}</b> </p>  
+              </ion-badge>
+              
+              <ion-card-content>
+                  <p>
+                      {{detailedCapsuleData.details }}
+                  </p>   
+               </ion-card-content>
+               <ion-list>
+                 <ion-item text-wrap>
+                    <ion-icon name="navigate" item-start></ion-icon>
+                    <p ion-text color="dark" class="tableCellTitle"> Landings : </p>
+                    <p item-end class="tableCellData">{{detailedCapsuleData.landings}}</p>
+                 </ion-item>
+            
+                    <button ion-item (tap)="didClickRocket(nextLaunch)" text-wrap>
+                        <ion-icon name="paper-plane" item-start></ion-icon>
+                        <p ion-text color="dark" class="tableCellTitle">Type : </p>
+                        <p item-end class="tableCellData">{{detailedCapsuleData.type}}</p>
+                      </button>
+               </ion-list>
+            
+            </ion-card-content>
 </ion-card>
 </ion-content>

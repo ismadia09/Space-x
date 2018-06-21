@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 import { DetailedCapsuleDataList } from '../../app/Models/DetailedCapsuleDataList';
+import { DetailedCapsuleDataSpecificPage } from '../detailed-capsule-data-specific/detailed-capsule-data-specific';
 
 /**
  * Generated class for the DetailedCapsuleDataListPage page.
@@ -26,5 +27,13 @@ export class DetailedCapsuleDataListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailedCapsuleDataListPage');
   }
+
+  didClickDetailedCapsuleData(detailedCapsuleData){
+    //this.navCtrl.push(LaunchpadDetailPage, { id: launch.site_id })
+    //console.log(`${launch.site_id}`);
+    this.navCtrl.push(DetailedCapsuleDataSpecificPage, detailedCapsuleData)
+
+  }
+
 
 }
