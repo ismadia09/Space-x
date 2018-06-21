@@ -24,13 +24,26 @@ export class LaunchpadDetailPage {
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider){
     this.launch = this.navParams.data;
-    this.spacexApi.getLaunchpadDetails(this.launch.launch_site.site_id).subscribe(data => {
-      this.launchpadDetails = data;
-    })
+    this.launchpadInfos = this.navParams.data;
+    if (typeof this.launch.launch_site.site_id != 'undefined'){
+      this.spacexApi.getLaunchpadDetails(this.launch.launch_site.site_id).subscribe(data => {
+        this.launchpadDetails = data;
+      })
+      this.spacexApi.getLaunchpadDetails(this.launchpadInfos.id).subscribe(data => {
+        this.launchpadDetails = data;
+      })
+    }
+
+   /* if (typeof this.launchpadInfos.id != 'undefined'){
+      this.spacexApi.getLaunchpadDetails(this.launchpadInfos.id).subscribe(data => {
+        this.launchpadDetails = data;
+      })
+    }
+    
     this.launchpadInfos = this.navParams.data;
     this.spacexApi.getLaunchpadDetails(this.launchpadInfos.id).subscribe(data => {
       this.launchpadDetails = data;
-    })
+    })*/
   };
   
 

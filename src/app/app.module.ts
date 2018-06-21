@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LaunchListPage } from '../pages/launch-list/launch-list';
 import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
 import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail';
+import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list/detailed-capsule-data-list';
+import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-specific/detailed-capsule-data-specific';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail'
     ListPage, 
     LaunchListPage,
     LaunchpadListPage,
-    LaunchpadDetailPage
+    LaunchpadDetailPage, 
+    DetailedCapsuleDataListPage,
+    DetailedCapsuleDataSpecificPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,9 @@ import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail'
     ListPage,
     LaunchListPage,
     LaunchpadListPage,
-    LaunchpadDetailPage
+    LaunchpadDetailPage,
+    DetailedCapsuleDataListPage,
+    DetailedCapsuleDataSpecificPage
   ],
   providers: [
     StatusBar,

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { Launch } from '../../app/Models/Launch';
 import { LaunchpadInfos } from '../../app/Models/LaunchpadInfos';
 import { LaunchpadDetails } from '../../app/Models/LaunchpadDetails';
+import { DetailedCapsuleDataSpecific } from '../../app/Models/DetailedCapsuleDataSpecific';
+import { DetailedCapsuleDataList } from '../../app/Models/DetailedCapsuleDataList';
 
 
 /*
@@ -39,5 +41,19 @@ export class SpacexApiProvider {
     const endPointUrl = `${this.baseUrl}/launchpads/${id}`;
     return this.http.get<LaunchpadDetails>(endPointUrl)
   }
+
+  getAllDetailedCapsuleData() : Observable<DetailedCapsuleDataList[]>{
+    const endPointUrl = `${this.baseUrl}/parts/caps`;
+   return this.http.get<DetailedCapsuleDataList[]>(endPointUrl)
+  }
+
+  getSpecificDetailedCapsuleData(id: string) : Observable<DetailedCapsuleDataSpecific>{
+    const endPointUrl = `${this.baseUrl}/parts/caps/${id}`;
+   return this.http.get<DetailedCapsuleDataSpecific>(endPointUrl)
+  }
+
+  
+
+  
 
 }

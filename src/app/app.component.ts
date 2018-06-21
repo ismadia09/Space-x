@@ -8,6 +8,8 @@ import { ListPage } from '../pages/list/list';
 import { LaunchListPage } from '../pages/launch-list/launch-list';
 import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail';
 import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
+import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list/detailed-capsule-data-list';
+import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-specific/detailed-capsule-data-specific';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +30,9 @@ export class MyApp {
       { title: 'List', component: ListPage },
       { title: 'Launches', component: LaunchListPage },
       { title: 'LaunchpadInfos', component: LaunchpadListPage },
-      { title: 'Launchpad Details', component: LaunchpadDetailPage }
+      //{ title: 'Launchpad Details', component: LaunchpadDetailPage },
+      { title: 'Detailed Capsule Data List', component: DetailedCapsuleDataListPage },
+      //{ title: 'Detailed Capsule Data Specific', component: DetailedCapsuleDataSpecificPage }
     ];
 
   }
