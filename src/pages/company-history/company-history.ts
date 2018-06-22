@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CompanyHistory } from '../../app/Models/CompanyHistory';
+import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 
 /**
  * Generated class for the CompanyHistoryPage page.
@@ -15,7 +17,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CompanyHistoryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  companyHistory : CompanyHistory ;
+  myDate : Date;
+  constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
+    this.spacexApi.getCompanyHistoryInfo().subscribe(data => {
+      this.companyHistory = data;
+      this.myDate = data.event_date_utc;
+    })
   }
 
   ionViewDidLoad() {

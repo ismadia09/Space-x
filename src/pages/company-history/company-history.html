@@ -7,12 +7,27 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>company-history</ion-title>
+    <ion-title>Company History</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<ion-card *ngFor="let historyItem of companyHistory">
+    <ion-card-header>
+            <ion-item text-wrap>
+               <p> <b> Title : {{historyItem.title}} </b>  </p>
+              </ion-item>
+        </ion-card-header> 
+        <ion-card-content>
+            <ion-item text-wrap>
+                <p> <b> Date :  </b> {{ historyItem.event_date_unix}} {{historyItem.event_date_utc}}</p> 
+                <p> <b> Details : </b> {{historyItem.details}} </p>
+                <p> <b> Links : </b> {{historyItem.links.reddit}}, {{historyItem.links.article}}, {{historyItem.links.wikipedia}} </p>
+               </ion-item>
+     
+        </ion-card-content>
 
+</ion-card>
 </ion-content>
