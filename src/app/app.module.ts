@@ -15,6 +15,8 @@ import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
 import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail';
 import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list/detailed-capsule-data-list';
 import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-specific/detailed-capsule-data-specific';
+import { CompanyDataInfoPage } from '../pages/company-data-info/company-data-info';
+import { CompanyHistoryPage } from '../pages/company-history/company-history';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-
     LaunchpadListPage,
     LaunchpadDetailPage, 
     DetailedCapsuleDataListPage,
-    DetailedCapsuleDataSpecificPage
+    DetailedCapsuleDataSpecificPage,
+    CompanyDataInfoPage,
+    CompanyHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-
     LaunchpadListPage,
     LaunchpadDetailPage,
     DetailedCapsuleDataListPage,
-    DetailedCapsuleDataSpecificPage
+    DetailedCapsuleDataSpecificPage,
+    CompanyDataInfoPage,
+    CompanyHistoryPage
   ],
   providers: [
     StatusBar,

@@ -10,6 +10,7 @@ import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail'
 import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
 import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list/detailed-capsule-data-list';
 import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-specific/detailed-capsule-data-specific';
+import { CompanyDataInfoPage } from '../pages/company-data-info/company-data-info';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,6 +29,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
+      { title: 'Company Info', component: CompanyDataInfoPage},
       { title: 'Launches', component: LaunchListPage },
       { title: 'LaunchpadInfos', component: LaunchpadListPage },
       //{ title: 'Launchpad Details', component: LaunchpadDetailPage },

@@ -1,3 +1,5 @@
+import { CompanyHistory } from '../../app/Models/CompanyHistory';
+import { CompanyInfo } from '../../app/Models/CompanyInfo';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -6,6 +8,7 @@ import { LaunchpadInfos } from '../../app/Models/LaunchpadInfos';
 import { LaunchpadDetails } from '../../app/Models/LaunchpadDetails';
 import { DetailedCapsuleDataSpecific } from '../../app/Models/DetailedCapsuleDataSpecific';
 import { DetailedCapsuleDataList } from '../../app/Models/DetailedCapsuleDataList';
+
 
 
 /*
@@ -53,7 +56,15 @@ export class SpacexApiProvider {
    return this.http.get<DetailedCapsuleDataSpecific>(endPointUrl)
   }
 
-  
+  getCompanyInfo() : Observable<CompanyInfo>{
+    const endPointUrl = `${this.baseUrl}/info`;
+   return this.http.get<CompanyInfo>(endPointUrl)
+  }
+
+  getCompanyHistoryInfo() : Observable<CompanyHistory>{
+    const endPointUrl = `${this.baseUrl}/info/history`;
+   return this.http.get<CompanyHistory>(endPointUrl)
+  }
 
   
 
