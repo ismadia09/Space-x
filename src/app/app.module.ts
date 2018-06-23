@@ -3,14 +3,15 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SpacexApiProvider } from '../providers/spacex-api/spacex-api';
 import { HttpClientModule } from '@angular/common/http';
 import { LaunchListPage } from '../pages/launch-list/launch-list';
+import { DetailLaunchPage } from '../pages/detail-launch/detail-launch';
+import { CapsuleListPage } from '../pages/capsule-list/capsule-list';
+import { CapsuleDetailPage } from '../pages/capsule-detail/capsule-detail';
 import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
 import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail';
 import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list/detailed-capsule-data-list';
@@ -18,12 +19,14 @@ import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-
 import { CompanyDataInfoPage } from '../pages/company-data-info/company-data-info';
 import { CompanyHistoryPage } from '../pages/company-history/company-history';
 
+
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    ListPage, 
     LaunchListPage,
+    CapsuleListPage,
+    DetailLaunchPage,
+    CapsuleDetailPage,
     LaunchpadListPage,
     LaunchpadDetailPage, 
     DetailedCapsuleDataListPage,
@@ -38,12 +41,13 @@ import { CompanyHistoryPage } from '../pages/company-history/company-history';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    ListPage,
+   MyApp,
     LaunchListPage,
+    CapsuleListPage,
+    DetailLaunchPage,
+    CapsuleDetailPage,
     LaunchpadListPage,
-    LaunchpadDetailPage,
+    LaunchpadDetailPage, 
     DetailedCapsuleDataListPage,
     DetailedCapsuleDataSpecificPage,
     CompanyDataInfoPage,

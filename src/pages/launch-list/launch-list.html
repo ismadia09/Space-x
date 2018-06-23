@@ -7,13 +7,18 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>launch-list</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+
+<ion-content class="contentDiv" >
+
 
   <!-- Next Launch -->
   <ion-card tappable *ngIf="nextLaunch" (tap)="didClickLaunch(nextLaunch)">
@@ -60,9 +65,11 @@
   <!-- End Next Launch -->
 
 
-<ion-card tappable *ngFor="let launch of launches " (tap)="didClickLaunch(launch)" >
 
-    <ion-item>
+<ion-card tappable *ngFor="let launch of launches "  >
+
+    <ion-item (tap)="didClickLaunch(launch)" >
+
       <ion-avatar item-right>
         <tbody>
           <tr>
@@ -76,7 +83,7 @@
       <p class="missionName">{{ launch.mission_name}}</p>
     </ion-item>
 
-  <ion-card-content>
+  <ion-card-content (tap)="didClickLaunch(launch)" >
     <p>{{ launch.details }}</p>
   </ion-card-content>
 
