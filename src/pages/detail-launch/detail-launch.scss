@@ -1,3 +1,58 @@
 page-detail-launch {
 
+    .cellLaunchYearTitle{
+        text-align: right;
+        font-size: 12px;
+    }
+
+    .cellLaunchYear{
+        text-align: right;
+        font-size: 14px;
+        font-weight: 600;
+        padding-top: 5px;
+    }
+
+    .missionName{
+        color: black;
+        font-weight: bold;
+    }
+
+    .tableCellData{
+        text-align: right;
+        color: black;
+    }
+
+    .tableCellTitleDetail{
+        text-align: left;
+        color: black;
+        font-weight: bold;
+    }
+
+    .hrCustom{
+    height: 2px;
+    background-color: rgb(191, 81, 74);
+    }
+
+    .booleanColor{
+        color: #8D1C53;
+        font-weight: bold;
+    }
+
+    .headerList{
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        font-style: italic;
+        color: #424242;
+    }
+
+    .expandRockButton{
+        height: 30px;
+        background-color: #f4f4f4;
+    }
+
+    .expandRocketButtonIcon{
+        color: black;
+        margin-left: 10px;
+    }
 }

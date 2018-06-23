@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 import { Launch } from '../../app/Models/Launch';
+import { DetailLaunchPage } from '../detail-launch/detail-launch';
 
 /**
  * Generated class for the LaunchListPage page.
@@ -37,10 +38,15 @@ export class LaunchListPage {
   /** Cells methodes */
   didClickLaunch(launch){
 
+    this.navCtrl.push(DetailLaunchPage, { launch: launch })
+  }
+
+  didClickVideo(launch){
+    console.log(launch.links.video_link)
   }
 
   didClickLaunchSite(launch){
-
+     
   }
 
   didClickRocket(launch){
