@@ -48,10 +48,6 @@ export class LaunchListPage {
     console.log(launch.links.video_link)
   }
 
-  didClickLaunchSite(launch){
-     
-
-  }
 
   didClickLaunchSite(launch){
     //this.navCtrl.push(LaunchpadDetailPage, { id: launch.site_id })
