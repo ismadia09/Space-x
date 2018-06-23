@@ -5,6 +5,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LaunchListPage } from '../pages/launch-list/launch-list';
 import { CapsuleListPage } from '../pages/capsule-list/capsule-list';
+import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail';
+import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
+import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list/detailed-capsule-data-list';
+import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-specific/detailed-capsule-data-specific';
+import { CompanyDataInfoPage } from '../pages/company-data-info/company-data-info';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +28,14 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Launches', component: LaunchListPage },
-      { title: 'Capsules', component: CapsuleListPage }
+      { title: 'Capsules', component: CapsuleListPage },
+      { title: 'Company Info', component: CompanyDataInfoPage},
+      { title: 'Launches', component: LaunchListPage },
+      { title: 'LaunchpadInfos', component: LaunchpadListPage },
+      //{ title: 'Launchpad Details', component: LaunchpadDetailPage },
+      { title: 'Detailed Capsule Data List', component: DetailedCapsuleDataListPage },
+      //{ title: 'Detailed Capsule Data Specific', component: DetailedCapsuleDataSpecificPage }
+
     ];
 
   }

@@ -12,6 +12,13 @@ import { LaunchListPage } from '../pages/launch-list/launch-list';
 import { DetailLaunchPage } from '../pages/detail-launch/detail-launch';
 import { CapsuleListPage } from '../pages/capsule-list/capsule-list';
 import { CapsuleDetailPage } from '../pages/capsule-detail/capsule-detail';
+import { LaunchpadListPage } from '../pages/launchpad-list/launchpad-list';
+import { LaunchpadDetailPage } from '../pages/launchpad-detail/launchpad-detail';
+import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list/detailed-capsule-data-list';
+import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-specific/detailed-capsule-data-specific';
+import { CompanyDataInfoPage } from '../pages/company-data-info/company-data-info';
+import { CompanyHistoryPage } from '../pages/company-history/company-history';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +26,13 @@ import { CapsuleDetailPage } from '../pages/capsule-detail/capsule-detail';
     LaunchListPage,
     CapsuleListPage,
     DetailLaunchPage,
-    CapsuleDetailPage
+    CapsuleDetailPage,
+    LaunchpadListPage,
+    LaunchpadDetailPage, 
+    DetailedCapsuleDataListPage,
+    DetailedCapsuleDataSpecificPage,
+    CompanyDataInfoPage,
+    CompanyHistoryPage
   ],
   imports: [
     BrowserModule,
@@ -28,11 +41,17 @@ import { CapsuleDetailPage } from '../pages/capsule-detail/capsule-detail';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+   MyApp,
     LaunchListPage,
     CapsuleListPage,
     DetailLaunchPage,
-    CapsuleDetailPage
+    CapsuleDetailPage,
+    LaunchpadListPage,
+    LaunchpadDetailPage, 
+    DetailedCapsuleDataListPage,
+    DetailedCapsuleDataSpecificPage,
+    CompanyDataInfoPage,
+    CompanyHistoryPage
   ],
   providers: [
     StatusBar,

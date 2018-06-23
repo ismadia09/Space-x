@@ -16,7 +16,9 @@
 </ion-header>
 
 
+
 <ion-content class="contentDiv" >
+
 
   <!-- Next Launch -->
   <ion-card tappable *ngIf="nextLaunch" (tap)="didClickLaunch(nextLaunch)">
@@ -63,9 +65,11 @@
   <!-- End Next Launch -->
 
 
+
 <ion-card tappable *ngFor="let launch of launches "  >
 
     <ion-item (tap)="didClickLaunch(launch)" >
+
       <ion-avatar item-right>
         <tbody>
           <tr>
