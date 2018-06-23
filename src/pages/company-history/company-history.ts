@@ -22,7 +22,6 @@ export class CompanyHistoryPage {
   constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
     this.spacexApi.getCompanyHistoryInfo().subscribe(data => {
       this.companyHistory = data;
-      this.myDate = data.event_date_utc;
     })
   }
 
