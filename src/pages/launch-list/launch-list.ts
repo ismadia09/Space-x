@@ -4,6 +4,8 @@ import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 import { Launch } from '../../app/Models/Launch';
 import { DetailLaunchPage } from '../detail-launch/detail-launch';
 import { LaunchpadDetailPage } from '../launchpad-detail/launchpad-detail';
+import { RocketsDetailsPage } from '../rockets-details/rockets-details';
+
 
 
 /**
@@ -19,6 +21,7 @@ import { LaunchpadDetailPage } from '../launchpad-detail/launchpad-detail';
   templateUrl: 'launch-list.html',
 })
 export class LaunchListPage {
+
 
   launches: Launch[]
   nextLaunch: Launch
@@ -58,8 +61,8 @@ export class LaunchListPage {
   }
 
   didClickRocket(launch){
-
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LaunchListPage');

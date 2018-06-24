@@ -18,6 +18,10 @@ import { DetailedCapsuleDataListPage } from '../pages/detailed-capsule-data-list
 import { DetailedCapsuleDataSpecificPage } from '../pages/detailed-capsule-data-specific/detailed-capsule-data-specific';
 import { CompanyDataInfoPage } from '../pages/company-data-info/company-data-info';
 import { CompanyHistoryPage } from '../pages/company-history/company-history';
+import { RocketsPage} from '../pages/rockets/rockets'
+import { RocketsDetailsPage } from '../pages/rockets-details/rockets-details'
+import { CoreListPage } from '../pages/core-list/core-list';
+import { CoreDetailsPage } from '../pages/core-details/core-details';
 
 
 @NgModule({
@@ -32,7 +36,11 @@ import { CompanyHistoryPage } from '../pages/company-history/company-history';
     DetailedCapsuleDataListPage,
     DetailedCapsuleDataSpecificPage,
     CompanyDataInfoPage,
-    CompanyHistoryPage
+    CompanyHistoryPage,
+    RocketsPage,
+    RocketsDetailsPage,
+    CoreListPage,
+    CoreDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,10 @@ import { CompanyHistoryPage } from '../pages/company-history/company-history';
     DetailedCapsuleDataListPage,
     DetailedCapsuleDataSpecificPage,
     CompanyDataInfoPage,
-    CompanyHistoryPage
+    CompanyHistoryPage,RocketsPage,
+    RocketsDetailsPage,
+    CoreListPage,
+    CoreDetailsPage
   ],
   providers: [
     StatusBar,

@@ -1,13 +1,15 @@
+
 import { CompanyHistory } from '../../app/Models/CompanyHistory';
 import { CompanyInfo } from '../../app/Models/CompanyInfo';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Launch } from '../../app/Models/Launch';
+import { Launch, Core } from '../../app/Models/Launch';
 import { LaunchpadInfos } from '../../app/Models/LaunchpadInfos';
 import { LaunchpadDetails } from '../../app/Models/LaunchpadDetails';
 import { DetailedCapsuleDataSpecific } from '../../app/Models/DetailedCapsuleDataSpecific';
 import { DetailedCapsuleDataList } from '../../app/Models/DetailedCapsuleDataList';
+import { Rocket } from '../../app/Models/Rocket';
 
 
 
@@ -76,6 +78,13 @@ export class SpacexApiProvider {
    return this.http.get<CompanyHistory[]>(endPointUrl)
   }
 
-  
+  getAllRockets() : Observable<Rocket[]>{
+    const endPointUrl = `${this.baseUrl}/rockets`;
+    return this.http.get<Rocket[]>(endPointUrl)
+  }
 
+  getAllCore() : Observable<Core[]>{
+    const endPointUrl = `${this.baseUrl}/parts/cores`;
+    return this.http.get<Core[]>(endPointUrl)
+  }
 }
