@@ -30,11 +30,9 @@ export class MyApp {
       { title: 'Launches', component: LaunchListPage },
       { title: 'Capsules', component: CapsuleListPage },
       { title: 'Company Info', component: CompanyDataInfoPage},
-      { title: 'Launches', component: LaunchListPage },
-      { title: 'LaunchpadInfos', component: LaunchpadListPage },
-      //{ title: 'Launchpad Details', component: LaunchpadDetailPage },
+      { title: 'Launchpad Infos', component: LaunchpadListPage },
       { title: 'Detailed Capsule Data List', component: DetailedCapsuleDataListPage },
-      //{ title: 'Detailed Capsule Data Specific', component: DetailedCapsuleDataSpecificPage }
+
 
     ];
 

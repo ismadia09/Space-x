@@ -17,7 +17,7 @@
 
 <ion-content padding >
 
-<ion-card   *ngFor="let detailedCapsuleData of detailedCapsuleDataList " (click)="didClickDetailedCapsuleData(detailedCapsuleData)" >
+<ion-card   *ngFor="let detailedCapsuleData of detailedCapsuleDataList " >
           <ion-item text-wrap>
               <b> {{detailedCapsuleData.capsule_serial}} </b>
             </ion-item>
@@ -37,7 +37,6 @@
                </ion-card-content>
                <ion-list>
                  <ion-item text-wrap>
-                    <ion-icon name="navigate" item-start></ion-icon>
                     <p ion-text color="dark" class="tableCellTitle"> Landings : </p>
                     <p item-end class="tableCellData">{{detailedCapsuleData.landings}}</p>
                  </ion-item>

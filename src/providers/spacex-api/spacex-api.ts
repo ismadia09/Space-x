@@ -71,9 +71,9 @@ export class SpacexApiProvider {
    return this.http.get<CompanyInfo>(endPointUrl)
   }
 
-  getCompanyHistoryInfo() : Observable<CompanyHistory>{
-    const endPointUrl = `${this.baseUrl}/info/history`;
-   return this.http.get<CompanyHistory>(endPointUrl)
+  getCompanyHistoryInfo() : Observable<CompanyHistory[]>{
+    const endPointUrl = `${this.baseUrl}/info/history?order=desc`;
+   return this.http.get<CompanyHistory[]>(endPointUrl)
   }
 
   

@@ -17,17 +17,19 @@
 <ion-card *ngFor="let historyItem of companyHistory">
     <ion-card-header>
             <ion-item text-wrap>
-               <p> <b> Title : {{historyItem.title}} </b>  </p>
+                <b> {{historyItem.title}} </b>
               </ion-item>
         </ion-card-header> 
         <ion-card-content>
-            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="historyItem.event_date_utc" > </ion-datetime>
+            <ion-datetime displayFormat="D MMMM YYYY" [(ngModel)]="historyItem.event_date_utc" > </ion-datetime>
+            <ion-item text-wrap> 
+                <ion-item> {{historyItem.details}} </ion-item>
+             </ion-item>
             <ion-item text-wrap>
-                <p> <b> Date :  </b> {{ historyItem.event_date_unix}} {{historyItem.event_date_utc}}</p> 
-                <p> <b> Details : </b> {{historyItem.details}} </p>
-                <p> <b> Links : </b> {{historyItem.links.reddit}}, {{historyItem.links.article}}, {{historyItem.links.wikipedia}} </p>
+              <ion-item *ngIf="historyItem.links.reddit"> <a href="historyItem.links.reddit"> Reddit </a> </ion-item>
+              <ion-item *ngIf="historyItem.links.article"> <a href="historyItem.links.article"> Article </a> </ion-item>
+              <ion-item *ngIf="historyItem.links.wikipedia"> <a href="historyItem.links.wikipedia"> Wikipedia </a> </ion-item>
                </ion-item>
-     
         </ion-card-content>
 
 </ion-card>

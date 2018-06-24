@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CompanyHistory } from '../../app/Models/CompanyHistory';
 import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
+import { Cordova, cordovaWarn } from '@ionic-native/core';
 
 /**
  * Generated class for the CompanyHistoryPage page.
@@ -17,16 +18,19 @@ import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 })
 export class CompanyHistoryPage {
 
-  companyHistory : CompanyHistory ;
-  myDate : Date;
+  companyHistory : CompanyHistory[] ;
+  url : string;
   constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
     this.spacexApi.getCompanyHistoryInfo().subscribe(data => {
       this.companyHistory = data;
     })
   }
 
+  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompanyHistoryPage');
   }
+
 
 }

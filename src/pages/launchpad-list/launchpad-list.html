@@ -17,7 +17,7 @@
 
 <ion-content>
 
-<ion-card *ngFor="let launchSite of launchpadInfos" (click)="didClickLaunchSite(launchSite)">
+<ion-card *ngFor="let launchSite of launchpadInfos">
         <ion-card-header>
                 <ion-item text-wrap>
                     <b> {{launchSite.full_name}} </b>
@@ -41,8 +41,7 @@
                <ion-list>
                  <ion-item text-wrap>
                     <ion-icon name="navigate" item-start></ion-icon>
-                    <p ion-text color="dark" class="tableCellTitle"> Location : </p>
-                    <p item-end class="tableCellData">{{launchSite.location}}</p>
+                    <p item-end class="tableCellData">{{launchSite.location.name}}</p>
                  </ion-item>
             
                     <button ion-item (tap)="didClickRocket(nextLaunch)" text-wrap>

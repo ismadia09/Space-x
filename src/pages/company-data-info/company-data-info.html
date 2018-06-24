@@ -19,21 +19,22 @@
 <ion-content padding  >
 <ion-card *ngIf="companyInfo">
             <ion-card-header>
-              <b> {{companyInfo.name}} </b>
+              <b>{{companyInfo.name}} </b>
             </ion-card-header>
             <ion-card-content>
-              <p> <b> {{companyInfo.founder}}</b> </p>
-              <p> Number of employees :  <b> {{companyInfo.employees}} </b> </p>
-              <p> Number of vehicles : <b> {{companyInfo.vehicles}}</b> </p>
-              <p> Number of launch sites : <b> {{companyInfo.launch_sites}}</b> </p>
-              <p> Number of test sites : <b> {{companyInfo.test_sites}} </b> </p>
-              <p> CEO : <b> {{companyInfo.ceo}} </b> </p>
-              <p> CTO : <b> {{companyInfo.cto}}</b> </p>
-              <p> COO : <b> {{companyInfo.coo}}</b> </p>
-              <p> CTO propulsion : <b> {{companyInfo.cto_propulsion}}</b> </p>
-              <p> Valuation : <b> {{companyInfo.valuation}}</b> </p>
-              <p> Headquarters : <b> {{companyInfo.headquarters.address}}, {{companyInfo.headquarters.city}}, {{companyInfo.headquarters.state}}  </b></p>
-              <p> Summary : <b> {{companyInfo.summary}}</b> </p>
+             
+              <ion-item> <p> Founder : </p>{{companyInfo.founder}} </ion-item>
+              <ion-item>  <p> Number of employees : </p> {{companyInfo.employees}}  </ion-item>
+              <ion-item>  <p> Number of vehicles :</p> {{companyInfo.vehicles}} </ion-item>
+              <ion-item>  <p> Number of launch sites :</p> {{companyInfo.launch_sites}}</ion-item>
+              <ion-item>  <p> Number of test sites : </p> {{companyInfo.test_sites}}</ion-item>
+              <ion-item>  <p> CEO : </p> {{companyInfo.ceo}} </ion-item>
+              <ion-item>  <p> CTO : </p> {{companyInfo.cto}}</ion-item>
+              <ion-item>  <p> COO :n</p> {{companyInfo.coo}}</ion-item>
+              <ion-item>  <p> CTO propulsion :</p> {{companyInfo.cto_propulsion}}</ion-item>
+              <ion-item>  <p> Valuation :</p> {{companyInfo.valuation}}</ion-item>
+              <ion-item>  <p> Headquarters : </p> {{companyInfo.headquarters.address}}, {{companyInfo.headquarters.city}}, {{companyInfo.headquarters.state}}</ion-item>
+              <ion-item>  <p> Summary :</p> {{companyInfo.summary}}</ion-item>
 
               <button ion-item (tap)="didClickHistory()" text-wrap>
                   <ion-icon name="paper-plane" item-start></ion-icon>
