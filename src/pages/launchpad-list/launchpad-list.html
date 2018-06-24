@@ -1,0 +1,58 @@
+<!--
+  Generated template for the LaunchpadListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Launch pads</ion-title> 
+   </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+<ion-card *ngFor="let launchSite of launchpadInfos">
+        <ion-card-header>
+                <ion-item text-wrap>
+                    <b> {{launchSite.full_name}} </b>
+                  </ion-item>
+            </ion-card-header>
+            <ion-card-content>
+              
+              <ion-badge  *ngIf=" launchSite.status == 'active'" color="secondary">
+                  <p> <b ion-text color="dark"> Status :</b>   <b>{{launchSite.status}}</b> </p>  
+              </ion-badge>
+            
+              <ion-badge  *ngIf=" launchSite.status != 'active'" color="orange">
+                  <p> <b ion-text color="dark"> Status :</b>   <b>{{launchSite.status}}</b> </p>  
+              </ion-badge>
+              
+              <ion-card-content>
+                  <p>
+                      {{launchSite.details }}
+                  </p>   
+               </ion-card-content>
+               <ion-list>
+                 <ion-item text-wrap>
+                    <ion-icon name="navigate" item-start></ion-icon>
+                    <p item-end class="tableCellData">{{launchSite.location.name}}</p>
+                 </ion-item>
+            
+                    <button ion-item (tap)="didClickRocket(nextLaunch)" text-wrap>
+                        <ion-icon name="paper-plane" item-start></ion-icon>
+                        <p ion-text color="dark" class="tableCellTitle">Rocket : </p>
+                        <p item-end class="tableCellData">{{launchSite.vehicles_launched}}</p>
+                      </button>
+               </ion-list>
+            
+            </ion-card-content>
+    
+    </ion-card>
+</ion-content>
+

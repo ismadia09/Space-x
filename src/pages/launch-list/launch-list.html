@@ -10,13 +10,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>launch-list</ion-title>
+    <ion-title>Launches</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
+
 <ion-content class="contentDiv" >
+
 
   <!-- Next Launch -->
   <ion-card tappable *ngIf="nextLaunch" (tap)="didClickLaunch(nextLaunch)">
@@ -63,9 +65,11 @@
   <!-- End Next Launch -->
 
 
+
 <ion-card tappable *ngFor="let launch of launches "  >
 
     <ion-item (tap)="didClickLaunch(launch)" >
+
       <ion-avatar item-right>
         <tbody>
           <tr>
