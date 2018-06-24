@@ -1,4 +1,4 @@
-interface Core {
+export interface Core {
     core_serial: string;
     block?: number;
     status: string;

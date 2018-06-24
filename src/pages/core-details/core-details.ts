@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Core } from '../../app/Models/Launch';
+import { Core } from '../../app/Models/Core';
 
 /**
  * Generated class for the CoreDetailsPage page.
@@ -15,10 +15,10 @@ import { Core } from '../../app/Models/Launch';
   templateUrl: 'core-details.html',
 })
 export class CoreDetailsPage {
-  core: Core;
+  coredet: Core;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.core = this.navParams.data;
+    this.coredet = this.navParams.data;
     }
 
   ionViewDidLoad() {
