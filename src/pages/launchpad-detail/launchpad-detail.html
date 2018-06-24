@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Launch Pad detail</ion-title>
+  <ion-navbar >
+    <ion-title *ngIf="launchpadDetails"> {{launchpadDetails.full_name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
