@@ -21,7 +21,10 @@
               </ion-item>
         </ion-card-header> 
         <ion-card-content>
-            <ion-datetime displayFormat="D MMMM YYYY" [(ngModel)]="historyItem.event_date_utc" > </ion-datetime>
+          <ion-item >
+              <ion-datetime displayFormat="D MMMM YYYY" [(ngModel)]="historyItem.event_date_utc"> </ion-datetime>
+          </ion-item>
+            
             <ion-item text-wrap> 
                 <ion-item> {{historyItem.details}} </ion-item>
              </ion-item>
