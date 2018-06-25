@@ -42,25 +42,23 @@ export class LaunchListPage {
 
   /** Cells methodes */
   didClickLaunch(launch){
-
-
+    console.log("didClickLaunch");
     this.navCtrl.push(DetailLaunchPage, { launch: launch })
   }
 
   didClickVideo(launch){
     console.log(launch.links.video_link)
+    window.open(launch.links.video_link, '_system')
   }
 
 
   didClickLaunchSite(launch){
-    //this.navCtrl.push(LaunchpadDetailPage, { id: launch.site_id })
-    console.log(`${launch.site_id}`);
+    console.log("didClickLaunchSite");
     this.navCtrl.push(LaunchpadDetailPage, launch)
-
-
   }
 
   didClickRocket(launch){
+    console.log("didClickRocket");
   }
 
 

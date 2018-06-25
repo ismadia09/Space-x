@@ -22,9 +22,9 @@
 
 
   <!-- Next Launch -->
-  <ion-card tappable *ngIf="nextLaunch" (tap)="didClickLaunch(nextLaunch)">
+  <ion-card tappable *ngIf="nextLaunch" >
   
-    <ion-item *ngIf="nextLaunch.launch_year">
+    <ion-item *ngIf="nextLaunch.launch_year" (tap)="didClickLaunch(nextLaunch)" >
       <ion-avatar item-right>
         <tbody>
           <tr>
@@ -38,7 +38,7 @@
       <p class="missionName">{{ nextLaunch.mission_name}}</p>
     </ion-item>
   
-    <ion-card-content>
+    <ion-card-content (tap)="didClickLaunch(nextLaunch)" >
       <p>{{ nextLaunch.details }}</p>
     </ion-card-content>
   
@@ -69,9 +69,9 @@
 
 <ion-card tappable *ngFor="let launch of launches "  >
 
-    <ion-item (tap)="didClickLaunch(launch)" >
+    <ion-item>
 
-      <ion-avatar item-right>
+      <ion-avatar item-right (tap)="didClickLaunch(launch)" >
         <tbody>
           <tr>
             <td class="cellLaunchYearTitle">Launch Year</td>
@@ -84,7 +84,7 @@
       <p class="missionName">{{ launch.mission_name}}</p>
     </ion-item>
 
-  <ion-card-content (tap)="didClickLaunch(launch)" >
+  <ion-card-content (tap)="didClickLaunch(launch)">
     <p>{{ launch.details }}</p>
   </ion-card-content>
 
