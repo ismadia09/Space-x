@@ -22,6 +22,7 @@
 
 
   <!-- Next Launch -->
+
   <ion-card tappable *ngIf="nextLaunch" >
   
     <ion-item *ngIf="nextLaunch.launch_year" (tap)="didClickLaunch(nextLaunch)" >
@@ -38,6 +39,7 @@
       <p class="missionName">{{ nextLaunch.mission_name}}</p>
     </ion-item>
   
+
     <ion-card-content (tap)="didClickLaunch(nextLaunch)" >
       <p>{{ nextLaunch.details }}</p>
     </ion-card-content>

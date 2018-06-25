@@ -21,6 +21,15 @@
           <ion-item text-wrap>
               <b> {{detailedCapsuleData.capsule_serial}} </b>
             </ion-item>
+            <ion-item *ngIf=" detailedCapsuleData.type == 'Dragon 2.0'" >
+                    <img src="assets/imgs/dragon2.jpg" />
+              </ion-item>
+              <ion-item *ngIf=" detailedCapsuleData.type == 'Dragon 1.0'" >
+                    <img src="assets/imgs/dragon1.jpg" />
+              </ion-item>
+              <ion-item *ngIf=" detailedCapsuleData.type == 'Dragon 1.1'" >
+                    <img src="assets/imgs/dragon1.jpg" />
+              </ion-item>
             <ion-card-content>
               <ion-badge  *ngIf=" detailedCapsuleData.status == 'active'" color="secondary">
                   <p> <b ion-text color="dark"> Status :</b>   <b>{{detailedCapsuleData.status}}</b> </p>  
@@ -29,7 +38,6 @@
               <ion-badge  *ngIf=" detailedCapsuleData.status != 'active'" color="orange">
                   <p> <b ion-text color="dark"> Status :</b>   <b>{{detailedCapsuleData.status}}</b> </p>  
               </ion-badge>
-              
               <ion-card-content>
                   <p>
                       {{detailedCapsuleData.details }}
