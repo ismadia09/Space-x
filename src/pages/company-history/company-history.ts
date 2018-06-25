@@ -25,8 +25,9 @@ export class CompanyHistoryPage {
       this.companyHistory = data;
     })
   }
-
-  
+  goExternalUri(uri : string){
+    window.open(uri,'_system')
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CompanyHistoryPage');

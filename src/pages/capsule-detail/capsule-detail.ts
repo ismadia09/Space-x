@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
+import { DetailedCapsuleDataList } from '../../app/Models/DetailedCapsuleDataList';
 
 /**
  * Generated class for the CapsuleDetailPage page.
@@ -17,6 +18,7 @@ import { SpacexApiProvider } from '../../providers/spacex-api/spacex-api';
 export class CapsuleDetailPage {
 
   capsule: Capsule
+  fromDetailCapsuleData : DetailedCapsuleDataList
   capsInfos: CapsInfo[]
 
   isDiameterEx: boolean
@@ -30,11 +32,26 @@ export class CapsuleDetailPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private spacexApi: SpacexApiProvider) {
     this.capsule = navParams.get('capsule');
-      
-    this.spacexApi.getCapsInfo(this.capsule.id).subscribe(data => {
-      console.log(data);
-      this.capsInfos=data
-    })
+    	
+if(typeof this.capsule.id !== "undefined") {
+  // do something with foo
+  let id = this.capsule.id
+  this.spacexApi.getCapsInfo(id).subscribe(data => {
+    console.log(data);
+    this.capsInfos=data
+  })
+  
+  console.log(this.capsule) 
+}else {
+  let id = this.fromDetailCapsuleData.capsule_id
+  this.spacexApi.getCapsInfo(id).subscribe(data => {
+    console.log(data);
+    this.capsInfos=data
+  })
+}
+   
+    
+    
     
     console.log(this.capsule)
   }
