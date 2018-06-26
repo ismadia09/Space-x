@@ -26,7 +26,7 @@
           </ion-item>
             
             <ion-item text-wrap> 
-                <ion-item> {{historyItem.details}} </ion-item>
+                <ion-item> <p style="text-align: justify">{{historyItem.details}}</p> </ion-item>
              </ion-item>
                <ion-list>
                   <button ion-item (tap)="goExternalUri(historyItem.links.reddit)" *ngIf="historyItem.links.reddit">

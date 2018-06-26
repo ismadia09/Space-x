@@ -6,6 +6,7 @@
         land_success?: boolean;
         landing_type: string;
         landing_vehicle: string;
+        missions: string[];
     }
 
     export interface FirstStage {

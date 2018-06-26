@@ -6,24 +6,90 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
+  <ion-navbar>
     <button menuToggle ion-button icon-only>
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-title>core</ion-title>
+    <ion-title>Cores</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content class="contentDiv">
+<ion-content class="contentDiv" >
 
-  <ion-grid *ngIf="core">
-    <ion-row>
-      <ion-col col-4 *ngFor="let r of core">
-        <ion-title (click)="goToDetails(r)">{{r.core_serial}}</ion-title>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<div *ngIf="cores"> 
+  <ion-card  *ngFor="let core of cores" >
+    <ion-item >
+      <ion-avatar item-right>
+        <tbody>
+          <tr>
+            <td class="cellLaunchYearTitle">Core Serial</td>
+          </tr>
+          <tr>
+            <td class="cellLaunchYear">{{ core.core_serial }} </td>
+          </tr>
+        </tbody>
+      </ion-avatar>
+      <p class="missionName">{{ core.status}}</p>
+    </ion-item>
+
+
+    <ion-card-content >
+      <hr/>
+
+      <ion-item>
+        <p class="tableCellTitleDetail">asds_landings: </p>
+        <p item-end class="tableCellData booleanColor">{{ core.asds_landings}}</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="tableCellTitleDetail">rtls_attempt: </p>
+        <p item-end class="tableCellData booleanColor">{{ core.rtls_attempt}}</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="tableCellTitleDetail">water_landing: </p>
+        <p item-end class="tableCellData booleanColor">{{ core.water_landing}}</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="tableCellTitleDetail">rtls_landings: </p>
+        <p item-end class="tableCellData booleanColor">{{ core.rtls_landings}}</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="tableCellTitleDetail">asds_landings: </p>
+        <p item-end class="tableCellData booleanColor">{{ core.asds_landings}}</p>
+      </ion-item>
+
+      
+      <ion-list-header *ngIf="core.missions">
+        <button ion-button full (click)="didClickExpandMissions()" class="expandRockButton">
+          <p class="headerList">MISSIONS</p>
+          <span style="width: 10px"></span>
+          <ion-icon class="expandRocketButtonIcon" *ngIf="isRocketExpand == false" item-end name="md-arrow-dropdown"></ion-icon>
+          <ion-icon class="expandRocketButtonIcon" *ngIf="isRocketExpand == true" item-end name="md-arrow-dropup"></ion-icon>
+        </button>
+      </ion-list-header>
+      
+      <div *ngIf="isMissionsExpand">
+        <ion-list *ngFor="let mission of core.missions">
+          <ion-item>
+            <p class="tableCellTitleDetail">{{mission}}</p>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <br/>
+
+      <p>{{ core.details }}</p>
+
+    </ion-card-content>
+
+  </ion-card>
+  
+</div>
+
+
 </ion-content>

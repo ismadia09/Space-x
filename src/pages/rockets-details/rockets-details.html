@@ -13,27 +13,40 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="contentDiv">
 
     <ion-card>
         <img src="../../assets/rockets_images/{{rockets.id}}.jpg" width="256" height="384" />
         <ion-card-header>
-          <h2>
-              <b>Name :</b> {{rockets.name}}
-          </h2>
-          <h2>
-              <pre><b>Dimensions:</b></pre> 
-              <pre><b>Height:</b> {{rockets.height.meters}} m</pre>
-              <pre><b>Diameter :</b> {{rockets.diameter.meters}} m</pre>
-              <pre><b>Mass : </b>{{rockets.mass.kg}} kg</pre>
-              <pre><b>First Flight:</b> {{ rockets.first_flight }}</pre>
-              <pre><b>Country:</b> {{ rockets.country }}</pre>
-          </h2>
+            <ion-badge  *ngIf=" rockets.success_rate_pct >= 80" color="secondary">
+                <p ion-text color="light"> <b > Succes rate :</b>   <b ion-text color="light">{{rockets.success_rate_pct}} %</b> </p>  
+            </ion-badge>
+            <ion-badge  *ngIf=" rockets.success_rate_pct <80 && rockets.success_rate_pct >= 50 " color="orange">
+                <p ion-text color="light"> <b> Succes rate :</b>   <b ion-text color="light">{{rockets.success_rate_pct}} %</b> </p>  
+            </ion-badge>
+        
+            <ion-badge  *ngIf=" rockets.success_rate_pct < 50" color="danger">
+                <p ion-text color="light"> <b> Succes rate :</b>   <b ion-text color="light">{{rockets.success_rate_pct}} %</b> </p>  
+            </ion-badge>  
         </ion-card-header>
         <ion-card-content>
-          <p>
-              <b>Description :</b> {{ rockets.description }}
-          </p>
+            <h2>
+                <ion-item > <b>{{rockets.name}} </b></ion-item> 
+             </h2>
+             <h2>
+                 <ion-item><b>Height:</b> <p>{{rockets.height.meters}} m</p></ion-item>
+                 <ion-item><b>Diameter :</b> <p>{{rockets.diameter.meters}} m</p></ion-item>
+                 <ion-item><b>Mass : </b> <p>{{rockets.mass.kg}} kg</p></ion-item>
+                 <ion-item><b>First Flight:</b> <p>{{ rockets.first_flight }}</p></ion-item>
+                 <ion-item><b>Company :</b> <p>{{rockets.company}}</p></ion-item>
+                 <ion-item><b>Country:</b> <p>{{ rockets.country }}</p></ion-item>
+             </h2>
+        <ion-item >
+            <b>Description :</b>
+          <ion-item text-wrap>
+              <p> {{ rockets.description }}</p> 
+          </ion-item>
+        </ion-item>
         </ion-card-content>
       </ion-card>
 

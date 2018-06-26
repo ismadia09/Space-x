@@ -6,25 +6,43 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
-    <button menuToggle ion-button icon-only>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-
-    <ion-title>rockets</ion-title>
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Rockets</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="contentDiv">
   <!--{{rockets | json}}-->
 
-  <ion-grid *ngIf="rockets">
-    <ion-row>
-      <ion-col col-4 *ngFor="let r of rockets">
-        <ion-title (click)="goToDetails(r)">{{r.name}}</ion-title>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card *ngFor="let rockets of rockets; index as i" [attr.data-index]="i"  (tap)="goToDetails(rockets)" >
+      <ion-card-header> 
+    <ion-item text-wrap>
+          <b> {{ rockets.name }} </b>
+        </ion-item>
+    <img src="../../assets/rockets_images/{{rockets.id}}.jpg" width="256" height="384"/>         
+   </ion-card-header>
+   
+  <ion-card-content>
+      <ion-badge  *ngIf=" rockets.success_rate_pct >= 80" color="secondary">
+          <p ion-text color="light"> <b > Succes rate :</b>   <b ion-text color="light">{{rockets.success_rate_pct}} %</b> </p>  
+      </ion-badge>
+      <ion-badge  *ngIf=" rockets.success_rate_pct <80 && rockets.success_rate_pct >= 50 " color="orange">
+          <p ion-text color="light"> <b> Succes rate :</b>   <b ion-text color="light">{{rockets.success_rate_pct}} %</b> </p>  
+      </ion-badge>
+  
+      <ion-badge  *ngIf=" rockets.success_rate_pct < 50" color="danger">
+          <p ion-text color="light"> <b> Succes rate :</b>   <b ion-text color="light">{{rockets.success_rate_pct}} %</b> </p>  
+      </ion-badge> 
+      <ion-item><b>Country :</b> <p>{{rockets.country}}</p></ion-item>
+      <ion-item><b>Company :</b> <p>{{rockets.company}}</p></ion-item>
+  </ion-card-content>
+   
+    
+  </ion-card>
+
 </ion-content>
