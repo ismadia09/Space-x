@@ -1,0 +1,39 @@
+<!--
+  Generated template for the CoreDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ coredet.core_serial }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contentDiv">
+
+    <ion-card>
+        <ion-card-header>
+          <h2>
+              <b>Name :</b> {{ coredet.core_serial }}
+          </h2>
+          <h2>
+              <pre><b>Status:</b> {{ coredet.status }}</pre>
+              <pre><b>Original Launch :</b> {{ coredet.original_launch }}</pre>
+              <pre><b>Mission :</b> {{ coredet.missions }}</pre>
+          </h2>
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+              <b>Details :</b> {{ coredet.details }}
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+  
+
+</ion-content>
+

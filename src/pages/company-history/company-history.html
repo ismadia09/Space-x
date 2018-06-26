@@ -1,0 +1,46 @@
+<!--
+  Generated template for the CompanyHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Company History</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contentDiv">
+<ion-card *ngFor="let historyItem of companyHistory">
+    <ion-card-header>
+            <ion-item text-wrap>
+                <b> {{historyItem.title}} </b>
+              </ion-item>
+        </ion-card-header> 
+        <ion-card-content>
+          <ion-item >
+              <ion-datetime displayFormat="D MMMM YYYY" [(ngModel)]="historyItem.event_date_utc"> </ion-datetime>
+          </ion-item>
+            
+            <ion-item text-wrap> 
+                <ion-item> {{historyItem.details}} </ion-item>
+             </ion-item>
+               <ion-list>
+                  <button ion-item (tap)="goExternalUri(historyItem.links.reddit)" *ngIf="historyItem.links.reddit">
+                      <p>Reddit</p>
+                </button>
+                <button ion-item (tap)="goExternalUri(historyItem.links.article)" *ngIf="historyItem.links.article">
+                    <p>Article</p>
+              </button>
+              <button ion-item (tap)="goExternalUri(historyItem.links.wikipedia)" *ngIf="historyItem.links.wikipedia">
+                   <p>Wikipedia</p>
+            </button>
+               </ion-list>
+            
+        </ion-card-content>
+
+</ion-card>
+</ion-content>

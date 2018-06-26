@@ -1,0 +1,175 @@
+<!--
+  Generated template for the DetailLaunchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>DetailLaunch</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contentDiv">
+
+  <ion-card>
+  
+    <ion-item *ngIf="launch.launch_year">
+      <ion-avatar item-right>
+        <tbody>
+          <tr>
+            <td class="cellLaunchYearTitle">Launch Year</td>
+          </tr>
+          <tr>
+            <td class="cellLaunchYear">{{ launch.launch_year }} </td>
+          </tr>
+        </tbody>
+      </ion-avatar>
+      <p class="missionName">{{ launch.mission_name}}</p>
+    </ion-item>
+    
+    <ion-card-content *ngIf="launch.details">
+      <p>{{ launch.details }}</p>
+    </ion-card-content>
+  
+
+    <!-- ROCKET -->
+<ion-list no-lines *ngIf="launch">
+
+  <ion-list-header>
+    <button ion-button full (click)="didClickExpandRocket()" class="expandRockButton" >
+      <p class="headerList">ROCKET   </p> <span style="width: 10px"></span>
+      <ion-icon class="expandRocketButtonIcon" *ngIf="isRocketExpand == false" item-end name="md-arrow-dropdown" ></ion-icon>
+      <ion-icon class="expandRocketButtonIcon" *ngIf="isRocketExpand == true" item-end name="md-arrow-dropup" ></ion-icon>
+    </button>
+  </ion-list-header>
+
+  <div *ngIf="isRocketExpand">
+      
+      <ion-item (tap)="didClickRocket(launch)">
+        <p class="tableCellTitleDetail">Rocket Name: </p>
+        <p item-end class="tableCellData">{{ launch.rocket.rocket_name}}
+          <ion-icon name="md-arrow-dropright"></ion-icon>
+        </p>
+      </ion-item>
+
+      <ion-item (tap)="didClickLaunchSite(launch)">
+        <p class="tableCellTitleDetail">Rocket Type: </p>
+        <p item-end class="tableCellData">{{ launch.rocket.rocket_type}}
+        </p>
+      </ion-item>
+
+            <!-- CORE -->
+            <ion-list  *ngFor="let core of cores">
+              <ion-item>
+                <p class="tableCellTitleDetail">Core Serial: </p>
+                <p item-end class="tableCellData">{{ core.core_serial}}</p>
+              </ion-item>
+
+              <ion-item>
+                <p class="tableCellTitleDetail">Flight: </p>
+                <p item-end class="tableCellData">{{ core.flight}}</p>
+              </ion-item>
+
+              <ion-item *ngIf="core.block" >
+                <p class="tableCellTitleDetail">Block: </p>
+                <p item-end class="tableCellData">{{ core.block }}</p>
+              </ion-item>
+
+              <ion-item>
+                <p class="tableCellTitleDetail">Reused: </p>
+                <p item-end class="tableCellData booleanColor">{{ core.reused}}</p>
+              </ion-item>
+
+              <ion-item *ngIf="core.land_success">
+                <p class="tableCellTitleDetail">Land Success: </p>
+                <p item-end class="tableCellData">{{ core.land_success}}</p>
+              </ion-item>
+
+              <ion-item *ngIf="core.landing_type" >
+                <p class="tableCellTitleDetail">Landing Type: </p>
+                <p item-end class="tableCellData">{{ core.landing_type}}</p>
+              </ion-item>
+
+              <ion-item *ngIf="core.landing_vehicle">
+                <p class="tableCellTitleDetail">Landing Vehicle: </p>
+                <p item-end class="tableCellData">{{ core.landing_vehicle}}</p>
+              </ion-item>
+
+            </ion-list>
+
+            
+
+  </div>
+  </ion-list>
+
+
+    <!-- LAUNCH SITE -->
+    <ion-list no-lines *ngIf="launch">
+    
+      <ion-list-header>
+        <p class="headerList">LAUNCH SITE</p>
+      </ion-list-header>
+        
+      <hr class="hrCustom">
+
+      <ion-item (tap)="didClickLaunchSite(launch)" >
+        <p class="tableCellTitleDetail">Site Name: </p>
+        <p item-end class="tableCellData">{{ launch.launch_site.site_name}} <ion-icon name="md-arrow-dropright"></ion-icon></p>
+      </ion-item>
+    
+      <ion-item>
+        <p class="tableCellTitleDetail">Site Name Long: </p>
+        <p item-end class="tableCellData">{{ launch.launch_site.site_name_long}}</p>
+      </ion-item>
+    
+    </ion-list>
+    
+    
+    <!-- REUSE -->
+    <ion-list no-lines  *ngIf="launch">
+      
+      <br>
+      <ion-list-header>
+         <p class="headerList">REUSE</p> 
+      </ion-list-header>
+    
+          <hr class="hrCustom">
+
+
+      <ion-item>
+        <p class="tableCellTitleDetail">Core: </p>
+        <p item-end class="tableCellData booleanColor">{{ launch.reuse.core}}</p>
+      </ion-item>
+    
+      <ion-item>
+        <p class="tableCellTitleDetail">Fairings: </p>
+        <p item-end class="tableCellData booleanColor">{{ launch.reuse.fairings}}</p>
+      </ion-item>
+
+      <ion-item>
+        <p class="tableCellTitleDetail">Capsule: </p>
+        <p item-end class="tableCellData booleanColor">{{ launch.reuse.capsule}} </p>
+      </ion-item>
+    
+      <ion-item>
+        <p class="tableCellTitleDetail">Side core 1: </p>
+        <p item-end class="tableCellData booleanColor">{{ launch.reuse.side_core1}}</p>
+      </ion-item>
+    
+      <ion-item>
+        <p class="tableCellTitleDetail">Side core 2: </p>
+        <p item-end class="tableCellData booleanColor">{{ launch.reuse.side_core2}}</p>
+      </ion-item>
+    
+    </ion-list>
+
+  </ion-card>
+
+
+  
+
+</ion-content>

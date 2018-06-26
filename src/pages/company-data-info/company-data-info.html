@@ -1,0 +1,45 @@
+<!--
+  Generated template for the CompanyDataInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Company Information</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="contentDiv"  >
+<ion-card *ngIf="companyInfo">
+            <ion-card-header>
+              <b>{{companyInfo.name}} </b>
+            </ion-card-header>
+            <ion-card-content>
+             
+              <ion-item> <p> Founder : </p>{{companyInfo.founder}} </ion-item>
+              <ion-item>  <p> Number of employees : </p> {{companyInfo.employees}}  </ion-item>
+              <ion-item>  <p> Number of vehicles :</p> {{companyInfo.vehicles}} </ion-item>
+              <ion-item>  <p> Number of launch sites :</p> {{companyInfo.launch_sites}}</ion-item>
+              <ion-item>  <p> Number of test sites : </p> {{companyInfo.test_sites}}</ion-item>
+              <ion-item>  <p> CEO : </p> {{companyInfo.ceo}} </ion-item>
+              <ion-item>  <p> CTO : </p> {{companyInfo.cto}}</ion-item>
+              <ion-item>  <p> COO :n</p> {{companyInfo.coo}}</ion-item>
+              <ion-item>  <p> CTO propulsion :</p> {{companyInfo.cto_propulsion}}</ion-item>
+              <ion-item>  <p> Valuation :</p> {{companyInfo.valuation}}</ion-item>
+              <ion-item>  <p> Headquarters : </p> {{companyInfo.headquarters.address}}, {{companyInfo.headquarters.city}}, {{companyInfo.headquarters.state}}</ion-item>
+              <ion-item>  <p> Summary :</p> {{companyInfo.summary}}</ion-item>
+
+              <button ion-item (tap)="didClickHistory()" text-wrap>
+                  <p ion-text color="dark"> See Company History </p>
+                </button>
+
+            </ion-card-content>       
+</ion-card>
+</ion-content>
