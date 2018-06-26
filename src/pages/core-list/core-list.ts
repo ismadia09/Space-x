@@ -18,16 +18,22 @@ import { CoreDetailsPage } from '../core-details/core-details';
 })
 export class CoreListPage {
 
-  core: Core[];
+  cores: Core[];
+  isMissionsExpand: boolean = false
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private spacexApi: SpacexApiProvider) {
     this.spacexApi.getAllCore().subscribe(data =>{
-      this.core = data;
+      this.cores = data;
     })
   
     }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CoreListPage');
+  }
+
+  didClickExpandMissions(){
+    this.isMissionsExpand = !this.isMissionsExpand
   }
 
   goToDetails(core: Core){
