@@ -25,6 +25,7 @@ export class LaunchListPage {
 
   launches: Launch[]
   nextLaunch: Launch
+  countDownNum: string
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
     this.spacexApi.getAllLaunches().subscribe(data => {
@@ -37,8 +38,37 @@ export class LaunchListPage {
       console.log("getNextLaunch")
       console.log(data)
     })
+
+    //setInterval(this.countDownFunc, 1000);
+    setInterval(() => this.countDownFunc(), 1000);
+
   }
 
+
+  countDownFunc(){
+    console.log("ok")
+
+    if (this.nextLaunch){
+      let date_string = this.nextLaunch.launch_date_local
+      let dateTo = new Date(date_string)
+      let dateFrom = new Date()
+      let comp = dateTo.getTime() - dateFrom.getTime()
+      
+      var minutes = Math.floor(comp / 60000);
+      var hours = minutes / 60;
+
+      if (hours > 1) {
+        var min_extract = hours.toString().split(".")[1]
+        var min_final = min_extract.substring(0, 2);
+      }
+
+
+      var seconds = ((comp % 60000) / 1000).toFixed(0);
+      //return parseInt(hours) + ":" + min_final + ":" + (seconds < 10 ? '0' : '') + seconds;
+
+      this.countDownNum = hours.toFixed(0).toString() + ":" + min_final.toString() + ":" + (parseInt(seconds) < 10 ? '0' : '') + seconds
+    }
+  }
 
   /** Cells methodes */
   didClickLaunch(launch){
