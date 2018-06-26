@@ -39,8 +39,13 @@
       <p class="missionName">{{ nextLaunch.mission_name}}</p>
     </ion-item>
   
+    
 
     <ion-card-content (tap)="didClickLaunch(nextLaunch)" >
+      <p class="countDownTitle"> Coming Launch: </p>
+
+      <p class="countDown"> {{ countDownNum }} </p>
+
       <p>{{ nextLaunch.details }}</p>
     </ion-card-content>
   
