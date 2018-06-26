@@ -83,5 +83,7 @@
     <plugin name="cordova-plugin-ionic-webview" spec="1.1.19" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
     <engine name="ios" spec="4.5.4" />
+    <allow-navigation href="http://10.33.3.215:8101" />
 </widget>

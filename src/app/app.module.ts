@@ -22,6 +22,7 @@ import { RocketsPage} from '../pages/rockets/rockets'
 import { RocketsDetailsPage } from '../pages/rockets-details/rockets-details'
 import { CoreListPage } from '../pages/core-list/core-list';
 import { CoreDetailsPage } from '../pages/core-details/core-details';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { CoreDetailsPage } from '../pages/core-details/core-details';
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SpacexApiProvider
   ]
