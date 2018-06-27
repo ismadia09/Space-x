@@ -23,6 +23,7 @@ import { RocketsDetailsPage } from '../pages/rockets-details/rockets-details'
 import { CoreListPage } from '../pages/core-list/core-list';
 import { CoreDetailsPage } from '../pages/core-details/core-details';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { LaunchesFilterPage } from '../pages/launches-filter/launches-filter';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     RocketsPage,
     RocketsDetailsPage,
     CoreListPage,
-    CoreDetailsPage
+    CoreDetailsPage,
+    LaunchesFilterPage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     CompanyHistoryPage,RocketsPage,
     RocketsDetailsPage,
     CoreListPage,
-    CoreDetailsPage
+    CoreDetailsPage,
+    LaunchesFilterPage
   ],
   providers: [
     StatusBar,

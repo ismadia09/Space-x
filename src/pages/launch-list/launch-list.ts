@@ -8,6 +8,8 @@ import { RocketsDetailsPage } from '../rockets-details/rockets-details';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ActionSheetController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
+import { LaunchesFilterPage } from '../launches-filter/launches-filter';
 
 
 
@@ -34,7 +36,7 @@ export class LaunchListPage {
   isShowNext:boolean = true
 
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, public alertCtrl: AlertController,  private spacexApi: SpacexApiProvider, private localNotifications: LocalNotifications) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, public alertCtrl: AlertController,  private spacexApi: SpacexApiProvider, private localNotifications: LocalNotifications, public popoverCtrl: PopoverController) {
     
     this.spacexApi.getAllLaunches().subscribe(data => {
       console.log("getAllLaunches")
@@ -196,9 +198,9 @@ export class LaunchListPage {
       
       var minutes = Math.floor(comp / 60000);
       var hours = minutes / 60;
-
       if (hours > 1) {
         var min_extract = hours.toString().split(".")[1]
+        
         if (min_extract){
           var min_final = min_extract.substring(0, 2);
         }
@@ -208,7 +210,7 @@ export class LaunchListPage {
       var seconds = ((comp % 60000) / 1000).toFixed(0);
       //return parseInt(hours) + ":" + min_final + ":" + (seconds < 10 ? '0' : '') + seconds;
 
-      this.countDownNum = hours.toFixed(0).toString() + ":" + min_final.toString() + ":" + (parseInt(seconds) < 10 ? '0' : '') + seconds
+      this.countDownNum = hours.toFixed(0).toString() + "h:" + min_final.toString() + "m:" + (parseInt(seconds) < 10 ? '0' : '') + seconds
     }
   }
 
@@ -236,6 +238,40 @@ export class LaunchListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LaunchListPage');
+  }
+
+didClickFilterBySuccess(){
+  console.log("didClickFilterBySuccess");
+  this.searchString = ""
+  this.isShowNext = false
+  this.spacexApi.getLaunchesFilteredBySuccess().subscribe(data => {
+    this.launches = data
+    this.tmp_launches = data
+  })
+  }
+
+didClickFilterByFailure(){
+    console.log("didClickFilterByFailure");
+    this.searchString = ""
+    this.isShowNext = false
+    this.spacexApi.getLaunchesFilteredByFailure().subscribe(data => {
+      this.launches = data
+      this.tmp_launches = data
+    })
+    }
+    
+didClickAllLaunches(){
+  console.log("didClickAllLaunches");
+  this.searchString = ""
+  this.isShowNext = true
+  this.spacexApi.getAllLaunches().subscribe(data => {
+    this.launches = data
+    this.tmp_launches = data
+  })
+  }
+  presentPopover() {
+    const popover = this.popoverCtrl.create(LaunchesFilterPage);
+    popover.present();
   }
 
 }

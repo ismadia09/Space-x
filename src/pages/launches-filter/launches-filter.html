@@ -1,0 +1,31 @@
+<!--
+  Generated template for the LaunchesFilterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Filters</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-list >
+      <button ion-item (click)="didClickFilterBySuccess()">
+          <ion-icon name="navigate" item-start></ion-icon>
+          <p class="tableCellTitle">By Success</p>
+          <p item-end class="tableCellData"></p>
+        </button>
+        <button ion-item>
+            <ion-icon name="navigate" item-start></ion-icon>
+            <p class="tableCellTitle">By Failure</p>
+            <p item-end class="tableCellData"></p>
+          </button>
+    
+  </ion-list>
+  
+</ion-content>
