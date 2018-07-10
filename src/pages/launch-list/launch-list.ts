@@ -108,8 +108,19 @@ export class LaunchListPage {
       this.launches = this.tmp_launches.filter((launch) => {
         return (launch.mission_name.toLowerCase().indexOf(this.searchString.toLowerCase()) > -1)
       })
+
     }
 
+    this.launches.sort((n1, n2) => {
+      if (n1.launch_year < n2.launch_year) {
+        return 1;
+      }
+      if (n1.launch_year > n2.launch_year) {
+        return -1;
+      }
+      return 0;
+    })
+    
     if (this.launches.length == this.tmp_launches.length) {
       this.isShowNext = true
     } else {
@@ -186,7 +197,6 @@ export class LaunchListPage {
 
 
   countDownFunc(){
-    console.log("ok")
 
     if (this.nextLaunch){
       let date_string = this.nextLaunch.launch_date_local
