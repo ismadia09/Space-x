@@ -8,6 +8,7 @@ import { RocketsDetailsPage } from '../rockets-details/rockets-details';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ActionSheetController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { Keyboard } from '@ionic-native/keyboard';
 
 
 
@@ -22,6 +23,7 @@ import { AlertController } from 'ionic-angular';
 @Component({
   selector: 'page-launch-list',
   templateUrl: 'launch-list.html',
+    providers: [Keyboard]
 })
 export class LaunchListPage {
 
@@ -32,14 +34,16 @@ export class LaunchListPage {
   countDownNum: string
   searchString: string
   isShowNext:boolean = true
+  sortButtonName: string = "all"
+  isAsc: boolean = true
 
-
-  constructor(private navCtrl: NavController, private navParams: NavParams, public alertCtrl: AlertController,  private spacexApi: SpacexApiProvider, private localNotifications: LocalNotifications) {
+  constructor(private navCtrl: NavController, private keyboard: Keyboard, private navParams: NavParams, public alertCtrl: AlertController,  private spacexApi: SpacexApiProvider, private localNotifications: LocalNotifications) {
     
     this.spacexApi.getAllLaunches().subscribe(data => {
       console.log("getAllLaunches")
       this.launches = data
       this.tmp_launches = data
+      this.sortFunc()
     })
 
     this.spacexApi.getNextLaunch().subscribe(data=>{
@@ -53,6 +57,62 @@ export class LaunchListPage {
 
   }
 
+  sortingIt(){
+    this.isAsc = !this.isAsc
+    this.sortFunc()
+  }
+
+  sortFunc(){
+    if (this.isAsc) {
+      this.launches.sort((n1, n2) => {
+        if (n1.launch_year < n2.launch_year) {
+          return 1;
+        }
+        if (n1.launch_year > n2.launch_year) {
+          return -1;
+        }
+        return 0;
+      })
+    } else {
+      this.launches.sort((n1, n2) => {
+        if (n1.launch_year > n2.launch_year) {
+          return 1;
+        }
+        if (n1.launch_year < n2.launch_year) {
+          return -1;
+        }
+        return 0;
+      })
+    }
+  }
+
+  onSegmentChange(){
+    console.log("onSegmentChange");
+    console.log(this.sortButtonName);
+    
+    this.searchString == ''
+
+    if (this.sortButtonName == "all") {
+      this.launches = this.tmp_launches
+    } else if (this.sortButtonName == "success") {
+      
+      this.launches = this.tmp_launches.filter((launch) => {
+        return launch.launch_success == true
+      })
+      
+    } else if (this.sortButtonName == "fail") {
+      this.launches = this.tmp_launches.filter((launch) => {
+        return launch.launch_success == false
+      })
+    }
+
+    this.sortFunc()
+    
+  }
+
+  onSearch(event) {
+    this.keyboard.close();
+  }
 
   onInput($event) {
     console.log($event)
@@ -110,17 +170,9 @@ export class LaunchListPage {
       })
 
     }
-
-    this.launches.sort((n1, n2) => {
-      if (n1.launch_year < n2.launch_year) {
-        return 1;
-      }
-      if (n1.launch_year > n2.launch_year) {
-        return -1;
-      }
-      return 0;
-    })
     
+    this.sortFunc()
+
     if (this.launches.length == this.tmp_launches.length) {
       this.isShowNext = true
     } else {
@@ -131,7 +183,7 @@ export class LaunchListPage {
 
   onCancel($event) {
     console.log($event)
-
+    this.keyboard.close();
   } 
 
 
