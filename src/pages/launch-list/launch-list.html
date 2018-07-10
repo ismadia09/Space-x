@@ -15,6 +15,9 @@
 
   </ion-navbar>
 
+  <ion-searchbar [(ngModel)]="searchString" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+
 </ion-header>
 
 
@@ -23,53 +26,61 @@
 
   <!-- Next Launch -->
 
-  <ion-card tappable *ngIf="nextLaunch" >
-  
-    <ion-item *ngIf="nextLaunch.launch_year" (tap)="didClickLaunch(nextLaunch)" >
-      <ion-avatar item-right>
-        <tbody>
-          <tr>
-            <td class="cellLaunchYearTitle">Launch Year</td>
-          </tr>
-          <tr>
-            <td class="cellLaunchYear">{{ nextLaunch.launch_year }} </td>
-          </tr>
-        </tbody>
-      </ion-avatar>
-      <p class="missionName">{{ nextLaunch.mission_name}}</p>
-    </ion-item>
-  
+  <div *ngIf="isShowNext == true">
+    <ion-card tappable *ngIf="nextLaunch">
     
+      <ion-item *ngIf="nextLaunch.launch_year" (tap)="didClickLaunch(nextLaunch)">
+        <ion-avatar item-right>
+          <tbody>
+            <tr>
+              <td class="cellLaunchYearTitle">Launch Year</td>
+            </tr>
+            <tr>
+              <td class="cellLaunchYear">{{ nextLaunch.launch_year }} </td>
+            </tr>
+          </tbody>
+        </ion-avatar>
+        <p class="missionName">{{ nextLaunch.mission_name}}</p>
 
-    <ion-card-content (tap)="didClickLaunch(nextLaunch)" >
-      <p class="countDownTitle"> Coming Launch: </p>
-
-      <p class="countDown"> {{ countDownNum }} </p>
-
-      <p>{{ nextLaunch.details }}</p>
-    </ion-card-content>
-  
-    <ion-list>
-      <button ion-item (tap)="didClickLaunchSite(nextLaunch)" *ngIf="nextLaunch.launch_site" >
-        <ion-icon name="navigate" item-start></ion-icon>
-        <p class="tableCellTitle">Site: </p>
-        <p item-end class="tableCellData">{{ nextLaunch.launch_site.site_name }}</p>
-  
-      </button>
-  
-      <ion-item  *ngIf="nextLaunch.rocket">
-        <ion-icon name="paper-plane" item-start></ion-icon>
-        <p class="tableCellTitle">Rocket: </p>
-        <p item-end class="tableCellData">{{ nextLaunch.rocket.rocket_name }}</p>
       </ion-item>
-  
-  
-    </ion-list>
-  
     
-  
-  </ion-card>
-  <!-- End Next Launch -->
+    
+    
+      <ion-card-content (tap)="didClickLaunch(nextLaunch)">
+        <p class="countDownTitle"> Coming Launch: </p>
+    
+        <p class="countDown"> {{ countDownNum }} </p>
+    
+        <p>{{ nextLaunch.details }}</p>
+    
+    
+      </ion-card-content>
+    
+      <ion-list>
+        <button ion-item (tap)="didClickLaunchSite(nextLaunch)" *ngIf="nextLaunch.launch_site">
+          <ion-icon name="navigate" item-start></ion-icon>
+          <p class="tableCellTitle">Site: </p>
+          <p item-end class="tableCellData">{{ nextLaunch.launch_site.site_name }}</p>
+    
+        </button>
+    
+        <ion-item *ngIf="nextLaunch.rocket">
+          <ion-icon name="paper-plane" item-start></ion-icon>
+          <p class="tableCellTitle">Rocket: </p>
+          <p item-end class="tableCellData">{{ nextLaunch.rocket.rocket_name }}</p>
+        </ion-item>
+    
+        <ion-item>
+          <button ion-button color="light" (tap)="didWantNotif()">Notify Me</button>
+        </ion-item>
+    
+      </ion-list>
+    
+    
+    
+    </ion-card>
+    <!-- End Next Launch -->
+  </div>
 
 
 
@@ -88,10 +99,30 @@
         </tbody>
       </ion-avatar>
       <p class="missionName">{{ launch.mission_name}}</p>
+
     </ion-item>
 
   <ion-card-content (tap)="didClickLaunch(launch)">
-    <p>{{ launch.details }}</p>
+      
+    <ion-badge *ngIf=" launch.launch_success == true " color="secondary">
+        <p style="color: white">
+          <b ion-text> Status :</b>
+          <b>{{launch.launch_success}}</b>
+        </p>
+      </ion-badge>
+      
+      <ion-badge *ngIf=" launch.launch_success != true " color="orange">
+        <p style="color: white">
+          <b ion-text> Status :</b>
+          <b>{{launch.launch_success}}</b>
+        </p>
+      </ion-badge>
+
+      <br>
+      <br>
+
+    <p> {{ launch.details }}</p>
+
   </ion-card-content>
 
     <ion-list>

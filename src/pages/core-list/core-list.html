@@ -12,7 +12,12 @@
     </button>
 
     <ion-title>Cores</ion-title>
+
   </ion-navbar>
+
+  <ion-searchbar [(ngModel)]="searchString" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+  </ion-searchbar>
+  
 </ion-header>
 
 

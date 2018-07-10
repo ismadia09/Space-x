@@ -5,6 +5,9 @@ import { Launch } from '../../app/Models/Launch';
 import { DetailLaunchPage } from '../detail-launch/detail-launch';
 import { LaunchpadDetailPage } from '../launchpad-detail/launchpad-detail';
 import { RocketsDetailsPage } from '../rockets-details/rockets-details';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+import { ActionSheetController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 
 
@@ -24,13 +27,19 @@ export class LaunchListPage {
 
 
   launches: Launch[]
+  tmp_launches: Launch[]
   nextLaunch: Launch
   countDownNum: string
+  searchString: string
+  isShowNext:boolean = true
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private spacexApi: SpacexApiProvider) {
+
+  constructor(private navCtrl: NavController, private navParams: NavParams, public alertCtrl: AlertController,  private spacexApi: SpacexApiProvider, private localNotifications: LocalNotifications) {
+    
     this.spacexApi.getAllLaunches().subscribe(data => {
       console.log("getAllLaunches")
       this.launches = data
+      this.tmp_launches = data
     })
 
     this.spacexApi.getNextLaunch().subscribe(data=>{
@@ -45,8 +54,149 @@ export class LaunchListPage {
   }
 
 
+  onInput($event) {
+    console.log($event)
+    console.log(this.searchString);
+
+    this.launches = this.tmp_launches
+
+    if (this.searchString == '') {
+      this.launches = this.tmp_launches
+      console.log("reset");
+
+      if (this.launches.length == this.tmp_launches.length) {
+        this.isShowNext = true
+      } else {
+        this.isShowNext = false
+      }
+
+      return
+    }
+
+    let searchArr = this.searchString.split(' ')
+    let key = searchArr.shift()
+    key = key.replace(' ', '');
+    key = key.trim();
+    console.log("key = " + key);
+    console.log("sr = " + searchArr.length);
+
+    if (key == "site" && searchArr.length >= 1) {
+      let newSearch = searchArr.join(" ");
+      newSearch = newSearch.trim();
+
+      console.log("new search = " + newSearch);
+
+      this.launches = this.tmp_launches.filter((launch) => {
+        return (launch.launch_site.site_name.toLowerCase().indexOf(newSearch.toLowerCase()) > -1)
+      })
+
+    } 
+
+    else if (key == "rocket" && searchArr.length >= 1){
+      let newSearch = searchArr.join(" ");
+      newSearch = newSearch.trim();
+
+      console.log("new search = " + newSearch);
+
+      this.launches = this.tmp_launches.filter((launch) => {
+        return (launch.rocket.rocket_name.toLowerCase().indexOf(newSearch.toLowerCase()) > -1)
+      })
+    }
+    
+    else {
+      console.log("else searchString = " + this.searchString);
+      this.launches = this.tmp_launches.filter((launch) => {
+        return (launch.mission_name.toLowerCase().indexOf(this.searchString.toLowerCase()) > -1)
+      })
+
+    }
+
+    this.launches.sort((n1, n2) => {
+      if (n1.launch_year < n2.launch_year) {
+        return 1;
+      }
+      if (n1.launch_year > n2.launch_year) {
+        return -1;
+      }
+      return 0;
+    })
+    
+    if (this.launches.length == this.tmp_launches.length) {
+      this.isShowNext = true
+    } else {
+      this.isShowNext = false
+    }
+
+  }
+
+  onCancel($event) {
+    console.log($event)
+
+  } 
+
+
+  didWantNotif(){
+    console.log("didWantNotif");
+
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Get Notification:');
+
+    alert.addInput({
+      type: 'radio',
+      label: '10 seconds for testing',
+      value: '1',
+      checked: true
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: '10 minutes before',
+      value: '10',
+      checked: false
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: '30 minutes before',
+      value: '30',
+      checked: false
+    });
+
+    alert.addInput({
+      type: 'radio',
+      label: '1 hour before',
+      value: '60',
+      checked: false
+    });
+
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+
+        console.log(data)
+
+        if(data==1){
+          this.localNotifications.schedule({
+            text: 'Wahou it\'s the big time!',
+            trigger: { at: new Date(new Date().getTime() + 10000) },
+            led: 'FF0000',
+            sound: null
+          });
+        }
+        
+
+      }
+    });
+    alert.present();
+
+    
+    
+  }
+
+
   countDownFunc(){
-    console.log("ok")
 
     if (this.nextLaunch){
       let date_string = this.nextLaunch.launch_date_local
@@ -59,7 +209,9 @@ export class LaunchListPage {
 
       if (hours > 1) {
         var min_extract = hours.toString().split(".")[1]
-        var min_final = min_extract.substring(0, 2);
+        if (min_extract){
+          var min_final = min_extract.substring(0, 2);
+        }
       }
 
 
