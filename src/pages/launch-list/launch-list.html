@@ -11,12 +11,37 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+
     <ion-title>Launches</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="sortingIt()">
+        <ion-icon *ngIf="isAsc == true" name="ios-arrow-down"></ion-icon>
+        <ion-icon *ngIf="isAsc == false" name="ios-arrow-up"></ion-icon>
+      </button>
+    </ion-buttons>
 
   </ion-navbar>
 
-  <ion-searchbar [(ngModel)]="searchString" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
+  <ion-searchbar [(ngModel)]="searchString" (search)="onSearch($event)" [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)">
   </ion-searchbar>
+
+   <div padding>
+      <ion-segment [(ngModel)]="sortButtonName" (ionChange)="onSegmentChange()" >
+        <ion-segment-button value="all">
+          All
+        </ion-segment-button>
+      
+        <ion-segment-button value="success">
+          Success
+        </ion-segment-button>
+      
+        <ion-segment-button value="fail">
+          Fail
+        </ion-segment-button>
+
+      </ion-segment>
+   </div>
 
 </ion-header>
 

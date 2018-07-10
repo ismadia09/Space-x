@@ -23,6 +23,7 @@ import { RocketsDetailsPage } from '../pages/rockets-details/rockets-details'
 import { CoreListPage } from '../pages/core-list/core-list';
 import { CoreDetailsPage } from '../pages/core-details/core-details';
 import { LocalNotifications } from '@ionic-native/local-notifications';
+import { Keyboard } from '@ionic-native/keyboard';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     SplashScreen,
     LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    SpacexApiProvider
+    SpacexApiProvider,
+    Keyboard
   ]
 })
 export class AppModule {}
