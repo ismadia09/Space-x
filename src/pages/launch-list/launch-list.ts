@@ -251,26 +251,32 @@ export class LaunchListPage {
   countDownFunc(){
 
     if (this.nextLaunch){
-      let date_string = this.nextLaunch.launch_date_local
+      let date_string = this.nextLaunch.launch_date_local      
       let dateTo = new Date(date_string)
       let dateFrom = new Date()
       let comp = dateTo.getTime() - dateFrom.getTime()
       
       var minutes = Math.floor(comp / 60000);
       var hours = minutes / 60;
-
+      
       if (hours > 1) {
-        var min_extract = hours.toString().split(".")[1]
-        if (min_extract){
-          var min_final = min_extract.substring(0, 2);
+        var h_to_cal = parseInt(hours.toString().split('.')[0])
+        var min_cal = minutes - (h_to_cal * 60)
+        var min_cal_str = min_cal.toString()
+        if (min_cal < 10 ){
+          min_cal_str = '0' + min_cal.toString()
         }
+        // var min_extract = hours.toString().split(".")[1]
+        // if (min_extract){
+        //   var min_final = min_extract.substring(0, 2);
+        // }
       }
 
 
       var seconds = ((comp % 60000) / 1000).toFixed(0);
       //return parseInt(hours) + ":" + min_final + ":" + (seconds < 10 ? '0' : '') + seconds;
 
-      this.countDownNum = hours.toFixed(0).toString() + ":" + min_final.toString() + ":" + (parseInt(seconds) < 10 ? '0' : '') + seconds
+      this.countDownNum = hours.toFixed(0).toString() + "(h) " + min_cal_str.toString() + "(m)" + (parseInt(seconds) < 10 ? '0' : '') + seconds + '(s)'
     }
   }
 
